@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 49% 49%;
+            grid-template-rows: 10em 10em;
+            gap: 1%;
+            background-color: AliceBlue;
+            margin: 2em;
+            padding: 2em;
+        }
+
+        .cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+        }
+    </style>
+</head>
+
+<body id="body" onload="registerAllEvents()">
+    <div class="container">
+        <div id="divA" class="cell" onclick="toggleBackgroundColor('divA')">A</div>
+        <div id="divB" class="cell" onmouseover="changeBackgroundColor('divB')" onmouseout="resetBackgroundColor('divB')">B</div>
+        <div id="divC" class="cell" onmouseenter="changeBackgroundColor('divC')" onmouseleave="resetBackgroundColor('divC')">C</div>
+        <div id="divD" class="cell">D</div>
+    </div>
+
+    <script>
+        function registerAllEvents() {
+        }
+
+        function toggleBackgroundColor(elementId) {
+            var element = document.getElementById(elementId);
+            var currentColor = element.style.backgroundColor;
+
+            if (currentColor === 'silver') {
+                element.style.backgroundColor = 'gold';
+            } else {
+                element.style.backgroundColor = 'silver';
+            }
+        }
+
+        function changeBackgroundColor(elementId) {
+            var element = document.getElementById(elementId);
+            var colors = ['blue', 'lime', 'red', 'yellow', 'green'];
+
+
+            var currentColor = element.style.backgroundColor;
+
+
+            var currentIndex = colors.indexOf(currentColor);
+
+
+            var nextColorIndex = (currentIndex + 1) % colors.length;
+            element.style.backgroundColor = colors[nextColorIndex];
+        }
+
+        function resetBackgroundColor(elementId) {
+            var element = document.getElementById(elementId);
+            element.style.backgroundColor = 'blue';
+        }
+    </script>
+</body>
+
+</html>
